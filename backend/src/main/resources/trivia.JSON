@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "question": "'cookie' comes from the Dutch word 'Koekje', what does Koekje mean?",
+    "correctAnswer": "Little Cake",
+    "options": ["Little Bite", "Small Treat", "Cooking"]
+  },
+  {
+    "id": 2,
+    "question": "When is National Cookie Day?",
+    "correctAnswer": "Dec 4th",
+    "options": ["July 4th", "Jan 4th", "Oct 31st"]
+  },
+  {
+    "id": 3,
+    "question": "How much did the 2003 world breaking cookie weigh?",
+    "correctAnswer": "40,000 lbs",
+    "options": ["30,000 lbs", "50,000 lbs", "20,000 lbs"]
+  },
+  {
+    "id": 4,
+    "question": "Which country is known for it's famous 'Biscotti' cookie?",
+    "correctAnswer": "Italy",
+    "options": ["Ireland", "USA", "Canada"]
+  },
+  {
+    "id": 5,
+    "question": "Which dessert is popular for coffee soaked lady fingers and mascarpone cheese?",
+    "correctAnswer": "Tiramisu",
+    "options": ["Italian Trifle", "Mocha cakes", "Affogato"]
+  },
+  {
+    "id": 6,
+    "question": "Japanese dessert made with sweet rice flour and sweet red bean paste?",
+    "correctAnswer": "Mochi",
+    "options": ["Dorayaki", "Dango", "Matcha"]
+  }
+]

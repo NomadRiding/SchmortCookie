@@ -13,4 +13,6 @@ public class GamePlay {
     private Date playDate;
     private boolean isPaid;
     private Integer score;
+    private User user;
+
 }

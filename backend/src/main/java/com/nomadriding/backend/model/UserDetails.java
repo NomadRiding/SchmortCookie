@@ -11,5 +11,10 @@ public class UserDetails {
     private String email;
     private String username;
     private String bio;
+    private String venmoLink;
+    private String cashApp;
+    private String zelle;
+    private User user;
+
 
 }
