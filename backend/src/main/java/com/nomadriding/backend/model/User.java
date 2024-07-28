@@ -30,8 +30,15 @@ public class User {
         this.gamePlays = new ArrayList<>();
     }
 
-    public void addGamePlay(GamePlay gamePlay) {
-        gamePlay.setUser(this);
-        this.gamePlays.add(gamePlay);
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", password='" + password + '\'' +
+                ", isLoggedOn=" + isLoggedOn +
+                ", gamePlays=" + gamePlays +
+                ", userDetails=" + userDetails +
+                '}';
     }
 }
