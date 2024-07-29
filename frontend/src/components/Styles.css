@@ -1,0 +1,160 @@
+/* Global styles for body to center the container */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    background-image: url(https://www.cosentino.com/en-za/wp-content/uploads/2023/05/Zen-Restaurant-10.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container-header {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 99;
+    margin-top: 25px;
+    box-shadow: 0 0 10px #000;
+    background-color: rgba(193, 190, 159, 0.726)
+}
+
+ 
+
+.container-header:hover .logo-image {
+    cursor: pointer;
+    transition-delay: 0.2s;
+    /* transform: rotate(45deg); */
+}
+
+.logo-placement {
+    color: hsl(16, 52%, 28%);
+    text-decoration: none;
+    font-size: 35px;
+    margin-top: 15px;
+}
+
+.logo-placement:hover {
+    color: hsl(16, 96%, 55%);
+}
+
+.logo-image {
+    height: 50px;
+    /* mix-blend-mode: multiply; */
+    margin-right: 10px;
+}
+
+.form-container {
+    margin: 60px auto;
+    height: auto;
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(220, 231, 240);
+    color: hsl(0, 0%, 0%);
+    position: relative;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    
+}
+
+.image-source img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+label, .image-source, .something, .submit-button {
+    width: 60%;
+    max-width: 100%;
+    margin: 10px;
+
+}
+
+form {
+    /* border: 1px solid green; */
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(197, 75%, 87%);
+    box-shadow:rgba(7, 4, 27, 0.384) 0px 7px 29px 0px;
+}
+.form-input {
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    margin: 10px;
+    /* margin: 0 35px 10px 35px; */
+    width: calc(100% - 20px);
+    cursor: pointer;
+    /* border: 1px solid red; */
+}
+
+label {
+    /* border: 1px solid red; */
+    width: 0;
+
+}
+
+input {
+    border: 1px solid purple;
+}
+.submit-button {
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-left: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100px;
+    align-self: center;
+}
+
+.submit-button:hover {
+    background-color: hsl(123, 82%, 37%);
+}
+
+
+@media (min-width: 768px) {
+    .form-container, .navbar {
+        width: 80%;
+        max-width: 800px;
+
+    }
+}
+
+@media (min-width: 1024px) {
+    .form-container, .navbar {
+        width: 70%;
+        max-width: 900px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        height: auto; 
+        padding: 10px; 
+    }
+
+    .submit-button {
+        width: auto; 
+    }
+}
