@@ -1,0 +1,36 @@
+/* Global styles for body to center the container */
+.logo-placement {
+    color: hsl(16, 52%, 28%);
+    text-decoration: none;
+    font-size: 35px;
+    margin-top: 15px;
+}
+
+.logo-placement:hover {
+    color: hsl(16, 96%, 55%);
+}
+
+.logo-image {
+    height: 50px;
+    /* mix-blend-mode: multiply; */
+    margin-right: 10px;
+}
+
+.container-header:hover .logo-image {
+    cursor: pointer;
+    transition-delay: 0.2s;
+    /* transform: rotate(45deg); */
+}
+
+.container-header {
+    align-items: center;
+    box-shadow: 0 0 10px #000;
+    background-color: rgba(193, 190, 159, 0.726);
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+    margin-top: 25px;
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+}

@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import '../components/Homepage.css';
-import LoginForm from '../components/LoginForm';
-import Navbar from '../components/Navbar';
+import '../components/styles/Homepage.css';
 import Trivia from '../components/Trivia';
 
-function HomePage() {
+const HomePage = ({ user }) => {
   return (
-    <div>
-        <LoginForm />
-        {/* <Trivia /> */}
-    </div>
+      // <div className='welcome-message'>
+      //     <h1>Welcome, GUEST!</h1>
+      //     <ul>
+      //       <li></li>
+      //     </ul>
+      // </div>
+      <Trivia />
   )
 }
 

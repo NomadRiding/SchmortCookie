@@ -1,5 +1,5 @@
 import React, { useState }  from 'react'
-import './Styles.css';
+import './styles/Navbar.css';
 import wholeCookie from '../assets/whole-cookie.png';
 import cookieBite from '../assets/cookie-bite.png';
 

@@ -1,0 +1,161 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.trivia-container {
+    align-items: center;
+    background-color: aliceblue;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 81vh;
+    justify-content: center;
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    width: 90%;
+}
+
+.trivia-game-boundaries {
+    /* border: 1px solid pink; */
+    align-items: center;
+    background-color: hsla(214, 11%, 52%, 0.5);
+    border-radius: 10px;
+    box-shadow:rgba(7, 15, 9, 0.384) 0px 7px 29px 0px;
+    display: flex;
+    flex-direction: column;
+    height: 71vh;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.trivia-app {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; 
+    margin-top: 70px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.timer {
+    align-items: center;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    width: 80px;
+    color: rgb(252, 203, 44);
+    text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.trivia-title {
+    align-items: center;
+    background-color: rgba(193, 190, 159, 0.726);
+    border-radius: 20px;
+    box-shadow:rgba(14, 152, 231, 0.555) 0px 7px 29px 0px;
+    color: hsl(16, 52%, 28%);
+    display: flex;
+    font-size: 24px;
+    justify-content: center;
+    text-align: center;
+    width: 250px;
+}
+
+.score {
+    align-items: center;
+    display: flex;
+    color: rgb(252, 203, 44);
+    text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-size: 30px;
+    font-weight: bold;
+    height: 50px;
+    justify-content: center;
+    width: 50px;
+}
+
+.question {
+    /* border: 1px solid rgb(5, 44, 129); */
+    align-items: center;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 10px;
+    box-shadow:rgba(7, 15, 9, 0.13) 0px 7px 29px 0px;
+    display: flex;
+    font-size: 20px;
+    height: 300px;
+    justify-content: center;
+    margin-top: 20px;
+    text-align: center;
+    width: 90%;
+}
+
+.spacer {
+    height: 50px;
+    margin-bottom: 70px;
+}
+
+.spacer-sml {
+    margin-bottom: 10px;
+}
+
+.answers {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin-left: 45%;
+    margin-top: 10px;
+    width: 100%;
+
+}
+
+.answers li {
+    align-items: center;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 10px;
+    box-shadow:rgba(7, 15, 9, 0.13) 0px 7px 29px 0px;
+    font-weight: bold;
+    justify-content: space-around;
+    list-style: none;
+    margin: 10px;
+    max-width: 600px;
+    padding: 10px;
+    text-align: center;
+    transition-delay: 0.08s;
+    width: 100%;
+
+}
+
+/* .answers li:hover {
+    background-color: hsla(0, 0%, 100%, 0.1);
+    border-radius: 10px;
+    box-shadow:rgba(14, 152, 231, 0.555) 0px 7px 29px 0px;
+    cursor: pointer;
+} */
+
+
+
+.correct-answer {
+    background-color: hsl(135, 100%, 38%);
+    box-shadow:rgba(14, 152, 231, 0.555) 0px 7px 29px 0px;
+}
+
+.incorrect-answer {
+    background-color: hsl(0, 100%, 50%);
+    box-shadow:rgba(14, 152, 231, 0.555) 0px 7px 29px 0px;
+    color: white;
+}
+
+li {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

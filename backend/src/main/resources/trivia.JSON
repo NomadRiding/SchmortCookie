@@ -34,5 +34,59 @@
     "question": "Japanese dessert made with sweet rice flour and sweet red bean paste?",
     "correctAnswer": "Mochi",
     "options": ["Dorayaki", "Dango", "Matcha"]
+  },
+  {
+    "id": 7,
+    "question": "In what year was the first iPhone released?",
+    "correctAnswer": "2007",
+    "options": ["2009", "2003", "2005"]
+  },
+  {
+    "id": 8,
+    "question": "FRIENDS: What is Chandler Bing's middle name?",
+    "correctAnswer": "Muriel",
+    "options": ["Michael", "Francis", "Charles"]
+  },
+  {
+    "id": 9,
+    "question": "What does WWE stand for?",
+    "correctAnswer": "World Wrestling Entertainment",
+    "options": ["World Wrestling Federation", "Wrestling World Enhancement", "World Mestling Entertainment"]
+  },
+  {
+    "id": 10,
+    "question": "In the Term 'Pop Culture', what is pop short for?",
+    "correctAnswer": "Popular",
+    "options": ["Pop", "Popping", "Present"]
+  },
+  {
+    "id": 11,
+    "question": "How many colors are in a rainbow?",
+    "correctAnswer": "7",
+    "options": ["6", "9", "10"]
+  },
+  {
+    "id": 12,
+    "question": "What is the tiny piece at the end of a shoelace called?",
+    "correctAnswer": "Aglet",
+    "options": ["Angelet", "Lace tip", "No Name" ]
+  },
+  {
+    "id": 13,
+    "question": "Originally, Amz sold what kind of products?",
+    "correctAnswer": "Books",
+    "options": ["kids toys", "eBooks", "kitchenware"]
+  },
+  {
+    "id": 14,
+    "question": "Who painted the Mona Lisa?",
+    "correctAnswer": "Leonardo Da Vinci",
+    "options": ["Leo De Caprio", "Beethoven", "Michelangelo"]
+  },
+  {
+    "id": 15,
+    "question": "Who was the first woman pilot to fly solo across the Atlantic?",
+    "correctAnswer": "Amelia Earhart",
+    "options": ["Rosa Parks", "Maria Antoinette", "Harriet Quimby"]
   }
 ]

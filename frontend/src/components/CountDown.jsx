@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './CountDown.css';
+import './styles/CountDown.css';
 
 const warningThreshold = 10;
 const alertThreshold = 5;
@@ -19,7 +19,7 @@ const colorCode = {
   }
 };
 
-const timeLimit = 25;
+const timeLimit = 30;
 
 const TimerComponent = () => {
   const [timePassed, setTimePassed] = useState(0);

@@ -1,15 +1,15 @@
 package com.nomadriding.backend.controller.impl;
 
-
 import com.nomadriding.backend.model.User;
 import com.nomadriding.backend.service.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -17,18 +17,26 @@ public class UserController {
     @Autowired
     IUserService userService;
 
-
-    // ************************************ GET ***********************
-
+    // ************************************ GET ****************************
     @GetMapping("/users")
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
     @GetMapping("/users/{id}")
-    public User getUserById(@PathVariable Integer id){
+    public User getUserById(@PathVariable Integer id) {
         return userService.getUserById(id);
     }
 
-}
+    // ************************************ POST ****************************
 
+    @CrossOrigin(origins = "http://localhost:5173")
+    @PostMapping("/user/add")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<Map<String, String>> saveUser(@RequestBody User user) {
+        userService.saveUser(user);
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "User added successfully");
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+}
