@@ -3,6 +3,8 @@ package com.nomadriding.backend.controller.impl;
 import com.nomadriding.backend.model.User;
 import com.nomadriding.backend.service.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,4 +41,24 @@ public class UserController {
         response.put("message", "User added successfully");
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
+
+    // ************************************ PUT ****************************
+
+    @PutMapping("/user/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateUser(@RequestBody @Valid User user, @PathVariable Integer id){
+        userService.updateUser(user, id);
+    }
+
+
+    // ************************************ DELETE ****************************
+
+    @DeleteMapping("/user/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteUser(@PathVariable Integer id){
+        userService.deleteUser(id);
+    }
+
+
 }

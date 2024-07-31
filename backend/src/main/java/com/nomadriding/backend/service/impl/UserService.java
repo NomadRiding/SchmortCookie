@@ -30,6 +30,20 @@ public class UserService implements IUserService {
     }
 
 
+    public User updateUser(User user, Integer id){
+        Optional<User> userOptional = userRepository.findById(id);
+        if(userOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User " + id + " not found.");
+        return userRepository.save(user);
+    }
+
+
+
+    public User deleteUser(Integer id){
+        Optional<User> userOptional = userRepository.findById(id);
+        if(userOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User " + id + " not found.");
+        userRepository.deleteById(id);
+        return userOptional.get();
+    }
 
 
 }
