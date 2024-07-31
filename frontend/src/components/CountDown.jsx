@@ -7,36 +7,40 @@ const FULL_DASH_ARRAY = 283; // Full length of the circle perimeter
 
 const colorCode = {
   info: {
-    color: "green"
+    color: "green",
   },
   warning: {
     color: "orange",
-    threshold: warningThreshold
+    threshold: warningThreshold,
   },
   alert: {
     color: "red", // Fixed typo: changed "color" to a valid color
-    threshold: alertThreshold
-  }
+    threshold: alertThreshold,
+  },
 };
 
 const timeLimit = 30;
 
-const TimerComponent = () => {
+const TimerComponent = ({ onTimerEnd }) => {
   const [timePassed, setTimePassed] = useState(0);
   const [timeLeft, setTimeLeft] = useState(timeLimit);
   const [remainingPathColor, setRemainingPathColor] = useState(colorCode.info.color);
 
   useEffect(() => {
+    let timerInterval;
     if (timeLeft > 0) {
-      const timerInterval = setInterval(() => {
+      timerInterval = setInterval(() => {
         updateTime();
       }, 1000);
-      return () => clearInterval(timerInterval); // Clean up interval on component unmount 
+    } else if (timeLeft === 0) {
+      onTimerEnd();
     }
-  }, [timeLeft]);
+
+    return () => clearInterval(timerInterval); // Clean up interval on component unmount 
+  }, [timeLeft, onTimerEnd]);
 
   const updateTime = () => {
-    setTimePassed(prev => {
+    setTimePassed((prev) => {
       const newTimePassed = prev + 1;
       if (newTimePassed <= timeLimit) {
         const newTimeLeft = timeLimit - newTimePassed;

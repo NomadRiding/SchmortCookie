@@ -1,24 +1,21 @@
 import React, { useState } from 'react';
 import './styles/LoginForm.css';
-import { Switch } from '@mui/material';
 
-const LoginForm = ({ onLogin, onRegister }) => {
+const RegisterForm = ({ onLogin }) => {
+    
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
-    const [isRegistering, setIsRegistering] = useState(false);
 
     const handlePhoneChange = (e) => setPhone(e.target.value);
     const handlePasswordChange = (e) => setPassword(e.target.value);
-    const toggleForm = () => setIsRegistering(!isRegistering);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const user = { phone, password };
+        const user = { phone: "phoneNumber", password };
+        console.log(user); // Debugging: Confirm user data
 
         try {
-            const endpoint = isRegistering ? 'register' : 'login';
-            const response = await fetch(`http://localhost:8080/api/user/add`, {
+            const response = await fetch('http://localhost:8080/api/user/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -32,15 +29,13 @@ const LoginForm = ({ onLogin, onRegister }) => {
             }
 
             const data = await response.json();
-            console.log(isRegistering ? 'New User Registered:' : 'User Logged In:', data);
+            console.log('New User Added:', data);
 
-            if (isRegistering) {
-                onRegister(data);
-            } else {
-                onLogin(data);
-            }
+            // Call onLogin to update the global state in App.jsx
+            onLogin(data);
+
         } catch (error) {
-            console.error('Error:', error.message);
+            console.error('Error:', error.message); // Debugging: Handle and display errors
         }
     };
 
@@ -54,10 +49,6 @@ const LoginForm = ({ onLogin, onRegister }) => {
                 />
             </div>
             <form onSubmit={handleSubmit}>
-                <div className='register-div'>
-                    <p className='register-toggle'>Register</p>
-                    <Switch className='register-switch' checked={isRegistering} onChange={toggleForm} inputProps={{'arial-label': 'controlled'}} />
-                </div>
                 <div className='form-input'>
                     <label htmlFor='phone'></label>
                     <input
@@ -80,15 +71,12 @@ const LoginForm = ({ onLogin, onRegister }) => {
                         required
                     />
                 </div>
-                <div>
                 <button className='submit-button' type='submit'>
-                    {isRegistering ? 'Register' : 'Login'}
+                    Login
                 </button>
-
-                </div>
             </form>
         </div>
     );
 };
 
-export default LoginForm;
+export default RegisterForm;

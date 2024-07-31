@@ -89,6 +89,23 @@ input {
     transition-delay: 0.08s;
 }
 
+.register-div {
+    display: flex;
+}
+
+.register-switch {
+    margin-bottom: 15px;
+}
+
+.register-toggle {
+    display: flex;
+    align-self: center;
+    font-weight: bold;
+    width: 60px;
+}
+
+
+
 
 @media (min-width: 768px) {
     .form-container, .navbar {

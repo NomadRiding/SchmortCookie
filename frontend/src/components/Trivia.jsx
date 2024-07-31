@@ -1,44 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import './styles/TriviaStyles.css';
-import TimerComponent from './CountDown';
+import StartGame from './StartGame';
+import TriviaGame from './TriviaGame';
+import GameEnded from './GameEnded';
 
 const Trivia = () => {
-
     const [questions, setQuestions] = useState([]);
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); 
-    const [score, setScore] = useState(0); 
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [score, setScore] = useState(0);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
-    const [isAnswering, setIsAnswering] = useState(false); 
+    const [isAnswering, setIsAnswering] = useState(false);
+    const [isGameRunning, setIsGameRunning] = useState(false);
+    const [isGameEnded, setIsGameEnded] = useState(false);
+    const [highScore, setHighScore] = useState(0);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/questions')
-        .then(response => {
-            if(!response.ok) {
-                throw new Error('Failed to fetch questions')
-            }
-            return response.json();
-        })
-        .then(data => {
-            setQuestions(shuffleArray(data));
-            setLoading(false);
-        })
-        .catch(error => {
-            setError(error.message);
-            setLoading(false);
-        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch questions');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setQuestions(data);
+                setLoading(false);
+            })
+            .catch(error => {
+                setError(error.message);
+                setLoading(false);
+            });
     }, []);
 
-    const shuffleArray = (array) => {
-        return array.sort(() => Math.random() - 0.5);
-    }
+    const handleStartGame = () => {
+        setCurrentQuestionIndex(0);
+        setScore(0);
+        setIsGameRunning(true);
+        setIsGameEnded(false);
+    };
 
     const handleAnswerClick = (selectedOption) => {
-        if (isAnswering) return; 
+        if (isAnswering) return;
         setSelectedAnswer(selectedOption);
-        setIsAnswering(true); 
-        
+        setIsAnswering(true);
+
         if (selectedOption === questions[currentQuestionIndex].correctAnswer) {
             setScore(score + 1);
         }
@@ -48,62 +55,55 @@ const Trivia = () => {
             if (nextIndex < questions.length) {
                 setCurrentQuestionIndex(nextIndex);
             } else {
-                // Quiz completed
-                setCurrentQuestionIndex(0);
-                setScore(0);
-                setQuestions(shuffleArray(questions));
+                setIsGameRunning(false);
+                setIsGameEnded(true);
+                if (score > highScore) {
+                    setHighScore(score);
+                }
             }
             setSelectedAnswer(null);
             setIsAnswering(false);
-        }, 1000); 
-    }
+        }, 1000);
+    };
+
+    const handleTimerEnd = () => {
+        setIsGameRunning(false);
+        setIsGameEnded(true);
+        if (score > highScore) {
+            setHighScore(score);
+        }
+    };
+
+    const handlePlayAgain = () => {
+        setIsGameEnded(false);
+        handleStartGame();
+    };
 
     if (loading) return <div>Loading...</div>;
-    if(error) return <div>Error: {error}</div>
-
-
-    const currentQuestion = questions[currentQuestionIndex];
+    if (error) return <div>Error: {error}</div>;
 
     return (
         <div className='trivia-container'>
-            <div className='trivia-game-boundaries'>
-            {/* <div className="spacer"></div> */}
-            <div className='trivia-app'>
-                <div className="timer">
-                    <TimerComponent />
-                </div>
-                <div className="trivia-title">
-                    <h1>@102Foxtrot</h1>
-                </div>
-                <div className="score">{score}</div>
-            </div>
-            {/* <div className="spacer-sml"></div> */}
-            <div className="question">{currentQuestion ? currentQuestion.question : "Loading"}</div>
-            {/* <div className="spacer"></div> */}
-            <div className="answers">
-            <ul>
-                        {currentQuestion &&
-                            shuffleArray([currentQuestion.correctAnswer, ...currentQuestion.options]).map((option, index) => (
-                                <li
-                                    key={index}
-                                    onClick={() => handleAnswerClick(option)}
-                                    className={
-                                        selectedAnswer
-                                            ? option === currentQuestion.correctAnswer
-                                                ? 'correct-answer'
-                                                : option === selectedAnswer
-                                                ? 'incorrect-answer'
-                                                : ''
-                                            : ''
-                                    }
-                                >
-                                    {option}
-                                </li>
-                            ))
-                        }
-                    </ul>
-            </div>
-            </div>
+            {!isGameRunning && !isGameEnded && (
+                <StartGame onStart={handleStartGame} />
+            )}
+            {isGameRunning && (
+                <TriviaGame
+                    questions={questions}
+                    currentQuestionIndex={currentQuestionIndex}
+                    score={score}
+                    onAnswer={handleAnswerClick}
+                    onTimerEnd={handleTimerEnd}
+                    selectedAnswer={selectedAnswer}
+                />
+            )}
+            {isGameEnded && (
+                <GameEnded
+                    score={score}
+                    highScore={highScore}
+                    onPlayAgain={handlePlayAgain}
+                />
+            )}
         </div>
     );
 }

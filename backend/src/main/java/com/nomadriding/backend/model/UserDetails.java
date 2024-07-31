@@ -13,6 +13,8 @@ public class UserDetails implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String email;
+    private String firstName;
+    private String lastName;
     private String username;
     private String bio;
     private String venmoLink;

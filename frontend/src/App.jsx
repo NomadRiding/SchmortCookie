@@ -18,18 +18,18 @@ function App() {
 
   return (
       <div>
-        <Navbar />
+        {/* <Navbar />
         <Routes>
           <Route path="/" element={<HomePage user={user} />} />
-        </Routes>
+        </Routes> */}
 
-        {/* <Routes>
+        <Routes>
           {isLoggedIn ? (
             <Route path="/" element={<HomePage user={user} />} />
           ) : (
             <Route path="/" element={<LoginForm onLogin={handleLogin} />} />
           )}
-        </Routes> */}
+        </Routes>
       </div>
 
   );
