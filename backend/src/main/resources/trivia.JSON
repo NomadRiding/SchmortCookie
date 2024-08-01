@@ -88,5 +88,113 @@
     "question": "Who was the first woman pilot to fly solo across the Atlantic?",
     "correctAnswer": "Amelia Earhart",
     "options": ["Rosa Parks", "Maria Antoinette", "Harriet Quimby"]
+  },
+  {
+    "id": 16,
+    "question": "Who played Groot in the Guardians of the Galaxy?",
+    "correctAnswer": "Vin Diesel",
+    "options": ["Vahn Damme", "Jason Statham", "Bradley Cooper"]
+  },
+  {
+    "id": 17,
+    "question": "This singer is famously called the 'Material Girl'",
+    "correctAnswer": "Madonna",
+    "options": ["Miley Cyrus", "Taylor Swift", "Cher"]
+  },
+  {
+    "id": 18,
+    "question": "How old was Rose in the Titanic when she was recounting her story?",
+    "correctAnswer": "100",
+    "options": ["24", "84", "96"]
+  },
+  {
+    "id": 19,
+    "question": "What was the name of the coffee shop in the TV show Friends?",
+    "correctAnswer": "Central Perk",
+    "options": ["Monk's Cafe", "Johnie's", "Gunther's Cafe"]
+  },
+  {
+    "id": 20,
+    "question": "What was the first Disney animated feature movie that was not based on an already existing story?",
+    "correctAnswer": "The Lion King",
+    "options": ["The Little Mermaid", "Dumbo", "Bambi"]
+  },
+  {
+    "id": 21,
+    "question": "How many Harry Potter books are there?",
+    "correctAnswer": "7",
+    "options": ["6", "8", "2"]
+  },
+  {
+    "id": 22,
+    "question": "What language allowed Harry and Voldemort to speak to snakes?",
+    "correctAnswer": "Parseltongue",
+    "options": ["Parcel Mouth", "Mermish", "Gobbledegook"]
+  },
+  {
+    "id": 23,
+    "question": "Which singer holds the most Grammy nominations?",
+    "correctAnswer": "Beyonce",
+    "options": ["Mariah Carey", "Jennifer Lopez", "Rihanna"]
+  },
+  {
+    "id": 24,
+    "question": "How old is Penelope Featherington supposed to be in Season 3 of Bridgerton?",
+    "correctAnswer": "19",
+    "options": ["18", "22", "16"]
+  },
+  {
+    "id": 25,
+    "question": "What film set did Ryan Reynolds and Blake Lively meet on?",
+    "correctAnswer": "The Green Lantern",
+    "options": ["Deadpool", "Van Wilder", "The Proposal"]
+  },
+  {
+    "id": 26,
+    "question": "Where is the largest bowling center located?",
+    "correctAnswer": "Japan",
+    "options": ["Russia", "Texas", "China"]
+  },
+  {
+    "id": 27,
+    "question": "How long is a marathon?",
+    "correctAnswer": "26.2 m",
+    "options": ["26 m", "26.2 Km", "13.1 m"]
+  },
+  {
+    "id": 28,
+    "question": "In Bowling, 3 strikes in a row is call what?",
+    "correctAnswer": "a turkey",
+    "options": ["a birdie", "a triple", "a sparrow"]
+  },
+  {
+    "id": 29,
+    "question": "What is the loudest animal on Earth?",
+    "correctAnswer": "The sperm whale",
+    "options": ["cicada", "blue whale", "howler monkeys"]
+  },
+  {
+    "id": 30,
+    "question": "How many hearts does the octopus have?",
+    "correctAnswer": "3",
+    "options": ["1", "9", "2"]
+  },
+  {
+    "id": 31,
+    "question": "How many bones do sharks have?",
+    "correctAnswer": "0",
+    "options": ["23", "261", "178"]
+  },
+  {
+    "id": 32,
+    "question": "Which animal is the fastest on land?",
+    "correctAnswer": "Cheetah",
+    "options": ["Lion", "Roadrunner", "Gazelle"]
+  },
+  {
+    "id": 33,
+    "question": "What color is a giraffe's tongue?",
+    "correctAnswer": "Black",
+    "options": ["blue", "purple", "red"]
   }
 ]
