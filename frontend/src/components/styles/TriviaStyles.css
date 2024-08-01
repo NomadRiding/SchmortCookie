@@ -83,24 +83,22 @@
     justify-content: center;
     margin-top: 20px;
     text-align: center;
-    width: 90%;
+    width: 550px;
 }
 
 .answers {
-
     gap: 20px;
     display: flex;
     justify-content: center;
     margin-top: 10px;
     width: 100%;
-
 }
 
 .answers li {
     align-items: center;
     background-color: hsl(0, 0%, 100%);
     border-radius: 10px;
-    box-shadow:rgba(7, 15, 9, 0.13) 0px 7px 29px 0px;
+    box-shadow: rgba(7, 15, 9, 0.13) 0px 7px 29px 0px;
     font-weight: bold;
     justify-content: space-around;
     list-style: none;
@@ -112,21 +110,22 @@
     width: 100%;
 }
 
+.answers li.correct-answer {
+    background-color: hsl(135, 100%, 38%);
+    box-shadow: rgba(14, 152, 231, 0.555) 0px 7px 29px 0px;
+}
+
+.answers li.incorrect-answer {
+    background-color: hsl(0, 100%, 50%);
+    box-shadow: rgba(14, 152, 231, 0.555) 0px 7px 29px 0px;
+    color: white;
+}
+
 .answers li:hover {
-    box-shadow:rgba(14, 152, 231, 0.555) 0px 7px 29px 0px;
+    box-shadow: rgba(14, 152, 231, 0.555) 0px 7px 29px 0px;
     cursor: pointer;
 }
 
-.correct-answer {
-    background-color: hsl(135, 100%, 38%);
-    box-shadow:rgba(14, 152, 231, 0.555) 0px 7px 29px 0px;
-}
-
-.incorrect-answer {
-    background-color: hsl(0, 100%, 50%);
-    box-shadow:rgba(14, 152, 231, 0.555) 0px 7px 29px 0px;
-    color: white;
-}
 
 
 

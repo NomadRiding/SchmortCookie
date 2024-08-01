@@ -73,7 +73,7 @@ const Trivia = () => {
             }
             setSelectedAnswer(null);
             setIsAnswering(false);
-        }, 200);
+        }, 400);
     };
 
     const handleTimerEnd = () => {
