@@ -33,4 +33,7 @@ public class User implements Serializable {
         this.password = password;
         this.isLoggedOn = false;
     }
+
+    public void setId(int i) {
+    }
 }
