@@ -32,14 +32,35 @@ public class UserController {
 
     // ************************************ POST ****************************
 
-    @CrossOrigin(origins = "http://localhost:5173")
-    @PostMapping("/user/add")
+    @PostMapping("/user/register")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Map<String, String>> saveUser(@RequestBody User user) {
+        boolean userExists = userService.existsByPhoneNumber(user.getPhoneNumber());
+        if (userExists) {
+            Map<String, String> response = new HashMap<>();
+            response.put("error", "Phone number already registered");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
+        }
+
         userService.saveUser(user);
         Map<String, String> response = new HashMap<>();
         response.put("message", "User added successfully");
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @PostMapping("/user/login")
+    public ResponseEntity<Map<String, String>> loginUser(@RequestBody User user) {
+        User foundUser = userService.findByPhoneNumberAndPassword(user.getPhoneNumber(), user.getPassword());
+
+        if(foundUser != null) {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "User logged in successfully");
+            return ResponseEntity.ok(response);
+        } else {
+            Map<String, String> response = new HashMap<>();
+            response.put("error", "Invalid phone number or password");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+        }
     }
 
 

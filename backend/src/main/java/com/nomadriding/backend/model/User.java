@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,9 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(unique = true)
     private String phoneNumber;
+
     private String password;
     private boolean isLoggedOn;
 
@@ -28,12 +31,10 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<GamePlay> gamePlays = new ArrayList<>();
 
-    public User(String phoneNumber, String password) {
-        this.phoneNumber = phoneNumber;
-        this.password = password;
-        this.isLoggedOn = false;
-    }
+//    public User(String phoneNumber, String password) {
+//        this.phoneNumber = phoneNumber;
+//        this.password = password;
+//        this.isLoggedOn = false;
+//    }
 
-    public void setId(int i) {
-    }
 }

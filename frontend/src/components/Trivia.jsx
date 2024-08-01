@@ -3,6 +3,8 @@ import './styles/TriviaStyles.css';
 import StartGame from './StartGame';
 import TriviaGame from './TriviaGame';
 import GameEnded from './GameEnded';
+import Navbar from './Navbar';
+
 
 const Trivia = () => {
     const [questions, setQuestions] = useState([]);
@@ -91,28 +93,31 @@ const Trivia = () => {
     if (error) return <div>Error: {error}</div>;
 
     return (
+        <>
+        <Navbar />
         <div className='trivia-container'>
             {!isGameRunning && !isGameEnded && (
                 <StartGame onStart={handleStartGame} />
             )}
             {isGameRunning && (
                 <TriviaGame
-                    questions={questions}
-                    currentQuestionIndex={currentQuestionIndex}
-                    score={score}
-                    onAnswer={handleAnswerClick}
-                    onTimerEnd={handleTimerEnd}
-                    selectedAnswer={selectedAnswer}
+                questions={questions}
+                currentQuestionIndex={currentQuestionIndex}
+                score={score}
+                onAnswer={handleAnswerClick}
+                onTimerEnd={handleTimerEnd}
+                selectedAnswer={selectedAnswer}
                 />
             )}
             {isGameEnded && (
                 <GameEnded
-                    score={score}
-                    highScore={highScore}
-                    onPlayAgain={handlePlayAgain}
+                score={score}
+                highScore={highScore}
+                onPlayAgain={handlePlayAgain}
                 />
             )}
         </div>
+        </>
     );
 }
 

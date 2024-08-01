@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './styles/LoginForm.css';
 
-const RegisterForm = ({ onLogin }) => {
+const RegisterForm = ({ onRegister }) => {
     
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
@@ -41,13 +41,6 @@ const RegisterForm = ({ onLogin }) => {
 
     return (
         <div className='form-container'>
-            <div className='image-source'>
-                <img
-                    src='https://www.onceuponachef.com/images/2021/11/Best-Chocolate-Chip-Cookies-760x950.jpg'
-                    alt='Sand Clock'
-                    className='image-login'
-                />
-            </div>
             <form onSubmit={handleSubmit}>
                 <div className='form-input'>
                     <label htmlFor='phone'></label>

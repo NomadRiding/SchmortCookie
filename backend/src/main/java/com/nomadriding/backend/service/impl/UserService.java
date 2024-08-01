@@ -1,49 +1,61 @@
 package com.nomadriding.backend.service.impl;
 
-
 import com.nomadriding.backend.model.User;
 import com.nomadriding.backend.repository.UserRepository;
 import com.nomadriding.backend.service.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
+import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService implements IUserService {
+
     @Autowired
     private UserRepository userRepository;
 
-    public List<User> getAllUsers(){
+    @Override
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
+    @Override
     public User getUserById(Integer id) {
-        return userRepository.findById(id).orElse(null);
+        return userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found"));
     }
 
-    public User saveUser(User user){
+    @Override
+    public User saveUser(User user) {
         return userRepository.save(user);
     }
 
-
-    public User updateUser(User user, Integer id){
-        Optional<User> userOptional = userRepository.findById(id);
-        if(userOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User " + id + " not found.");
-        return userRepository.save(user);
+    public boolean existsByPhoneNumber(String phoneNumber) {
+        return userRepository.existsByPhoneNumber(phoneNumber);
     }
 
+    @Override
+    public User findByPhoneNumberAndPassword(String phoneNumber, String password) {
+        User user = userRepository.findByPhoneNumberAndPassword(phoneNumber, password);
+        if (user == null) {
+            throw new EntityNotFoundException("Invalid phone number or password");
+        }
+        return user;
+    }
 
+    @Override
+    public void updateUser(User user, Integer id) {
+        User existingUser = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found"));
 
-    public User deleteUser(Integer id){
-        Optional<User> userOptional = userRepository.findById(id);
-        if(userOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User " + id + " not found.");
+        existingUser.setPhoneNumber(user.getPhoneNumber());
+        existingUser.setPassword(user.getPassword());
+        existingUser.setLoggedOn(user.isLoggedOn());
+
+        userRepository.save(existingUser);
+    }
+
+    @Override
+    public void deleteUser(Integer id) {
         userRepository.deleteById(id);
-        return userOptional.get();
     }
-
-
 }

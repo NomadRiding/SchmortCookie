@@ -10,7 +10,8 @@ public interface IUserService {
     List<User> getAllUsers();
     User getUserById(Integer id);
     User saveUser(User user);
-    User updateUser(User user, Integer id);
-    User deleteUser(Integer id);
-
+    void updateUser(User user, Integer id);
+    void deleteUser(Integer id);
+    User findByPhoneNumberAndPassword(String phoneNumber, String password);
+    boolean existsByPhoneNumber(String phoneNumber);
 }

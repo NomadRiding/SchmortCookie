@@ -1,6 +1,6 @@
 .trivia-container {
     align-items: center;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
     border-radius: 10px;
     display: flex;
     flex-direction: column;
