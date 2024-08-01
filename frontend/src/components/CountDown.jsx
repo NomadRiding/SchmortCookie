@@ -3,7 +3,7 @@ import './styles/CountDown.css';
 
 const warningThreshold = 10;
 const alertThreshold = 5;
-const FULL_DASH_ARRAY = 283; // Full length of the circle perimeter
+const FULL_DASH_ARRAY = 283; 
 
 const colorCode = {
   info: {
@@ -14,12 +14,12 @@ const colorCode = {
     threshold: warningThreshold,
   },
   alert: {
-    color: "red", // Fixed typo: changed "color" to a valid color
+    color: "red", 
     threshold: alertThreshold,
   },
 };
 
-const timeLimit = 30;
+const timeLimit = 5;
 
 const TimerComponent = ({ onTimerEnd }) => {
   const [timePassed, setTimePassed] = useState(0);
@@ -36,7 +36,7 @@ const TimerComponent = ({ onTimerEnd }) => {
       onTimerEnd();
     }
 
-    return () => clearInterval(timerInterval); // Clean up interval on component unmount 
+    return () => clearInterval(timerInterval); 
   }, [timeLeft, onTimerEnd]);
 
   const updateTime = () => {

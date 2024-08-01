@@ -1,14 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import TimerComponent from './CountDown';
 
 const TriviaGame = ({ questions, currentQuestionIndex, score, onAnswer, onTimerEnd, selectedAnswer }) => {
-    
+    const [shuffledOptions, setShuffledOptions] = useState([]);
     const currentQuestion = questions[currentQuestionIndex];
 
-    const shuffledOptions = () => {
-        const options = [currentQuestion.correctAnswer, ...currentQuestion.options];
-        return options.sort(() => Math.random() - 0.5);
+    useEffect(() => {
+        if (currentQuestion) {
+            const options = [currentQuestion.correctAnswer, ...currentQuestion.options];
+            setShuffledOptions(shuffleArray(options));
+        }
+    }, [currentQuestion]);
+
+    const shuffleArray = (array) => {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
     }
+
+    const getClassName = (option) => {
+        if (!selectedAnswer) return '';
+        if (option === currentQuestion.correctAnswer) return 'correct-answer';
+        if (option === selectedAnswer) return 'incorrect-answer';
+        return '';
+    };
 
     return (
         <div className='trivia-game-boundaries'>
@@ -23,19 +40,11 @@ const TriviaGame = ({ questions, currentQuestionIndex, score, onAnswer, onTimerE
             <div className="answers">
                 <ul>
                     {currentQuestion &&
-                        shuffledOptions().map((option, index) => (
+                        shuffledOptions.map((option) => (
                             <li
-                                key={index}
+                                key={option}
                                 onClick={() => onAnswer(option)}
-                                className={
-                                    selectedAnswer
-                                        ? option === currentQuestion.correctAnswer
-                                            ? 'correct-answer'
-                                            : option === selectedAnswer
-                                                ? 'incorrect-answer'
-                                                : ''
-                                        : ''
-                                }
+                                className={getClassName(option)}
                             >
                                 {option}
                             </li>

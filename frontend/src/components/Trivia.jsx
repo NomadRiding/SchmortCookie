@@ -25,7 +25,7 @@ const Trivia = () => {
                 return response.json();
             })
             .then(data => {
-                setQuestions(data);
+                setQuestions(shuffleArray(data));
                 setLoading(false);
             })
             .catch(error => {
@@ -33,6 +33,14 @@ const Trivia = () => {
                 setLoading(false);
             });
     }, []);
+
+    const shuffleArray = (array) => {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
 
     const handleStartGame = () => {
         setCurrentQuestionIndex(0);
@@ -63,7 +71,7 @@ const Trivia = () => {
             }
             setSelectedAnswer(null);
             setIsAnswering(false);
-        }, 1000);
+        }, 200);
     };
 
     const handleTimerEnd = () => {

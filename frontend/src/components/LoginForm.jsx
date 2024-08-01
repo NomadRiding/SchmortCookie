@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './styles/LoginForm.css';
 import { Switch } from '@mui/material';
 
+
 const LoginForm = ({ onLogin, onRegister }) => {
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
@@ -45,14 +46,21 @@ const LoginForm = ({ onLogin, onRegister }) => {
     };
 
     return (
+        <>
+        <div className="loginBody">
+
         <div className='form-container'>
-            <div className='image-source'>
+            {/* <div className='image-source'>
                 <img
-                    src='https://www.onceuponachef.com/images/2021/11/Best-Chocolate-Chip-Cookies-760x950.jpg'
-                    alt='Sand Clock'
-                    className='image-login'
+                
+                src='https://www.onceuponachef.com/images/2021/11/Best-Chocolate-Chip-Cookies-760x950.jpg'
+                alt='Sand Clock'
+                className='image-login'
                 />
-            </div>
+                </div> */}
+            <div className="login-container">
+            <div className="entry-form">
+
             <form onSubmit={handleSubmit}>
                 <div className='register-div'>
                     <p className='register-toggle'>Register</p>
@@ -67,7 +75,7 @@ const LoginForm = ({ onLogin, onRegister }) => {
                         onChange={handlePhoneChange}
                         placeholder='Phone number:'
                         required
-                    />
+                        />
                 </div>
                 <div className='form-input'>
                     <label htmlFor='password'></label>
@@ -78,7 +86,7 @@ const LoginForm = ({ onLogin, onRegister }) => {
                         onChange={handlePasswordChange}
                         placeholder='Password:'
                         required
-                    />
+                        />
                 </div>
                 <div>
                 <button className='submit-button' type='submit'>
@@ -87,7 +95,11 @@ const LoginForm = ({ onLogin, onRegister }) => {
 
                 </div>
             </form>
+            </div>
+            </div>
         </div>
+    </div>
+    </>
     );
 };
 
