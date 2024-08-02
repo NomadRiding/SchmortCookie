@@ -10,7 +10,11 @@ const LoginForm = ({ onLogin, onRegister }) => {
     const [isRegistering, setIsRegistering] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
-    const handlePhoneChange = (e) => setPhone(e.target.value);
+    const handlePhoneChange = (e) => {
+        const { value } = e.target;
+        const numericValue = value.replace(/[^0-9]/g, '');
+        setPhone(numericValue);
+        };
     const handlePasswordChange = (e) => setPassword(e.target.value);
     const toggleForm = () => {
         setErrorMessage('');
@@ -82,6 +86,8 @@ const LoginForm = ({ onLogin, onRegister }) => {
                                 <input
                                     type='text'
                                     id='phone'
+                                    pattern="[0-9]*" 
+                                    inputMode="numeric"         
                                     value={phone}
                                     onChange={handlePhoneChange}
                                     placeholder='Phone number:'
