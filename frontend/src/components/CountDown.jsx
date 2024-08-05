@@ -19,7 +19,7 @@ const colorCode = {
   },
 };
 
-const timeLimit = 3;
+const timeLimit = 60;
 
 const TimerComponent = ({ onTimerEnd }) => {
   const [timePassed, setTimePassed] = useState(0);

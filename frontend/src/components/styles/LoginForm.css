@@ -59,7 +59,7 @@ input {
 .submit-button {
     align-self: center;
     border-radius: 10px;
-    box-shadow:rgba(21, 36, 24, 0.384) 0px 7px 29px 0px;
+    box-shadow:rgba(7, 15, 9, 0.384) 0px 7px 29px 0px;
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;

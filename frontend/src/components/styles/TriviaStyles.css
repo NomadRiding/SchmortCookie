@@ -15,7 +15,7 @@
 
 .trivia-game-boundaries {
     align-items: center;
-    background-color: hsla(214, 11%, 52%, 0.5);
+    background-color: hsla(36, 49%, 57%, 0.5);
     border-radius: 10px;
     box-shadow:rgba(7, 15, 9, 0.384) 0px 7px 29px 0px;
     display: flex;
@@ -79,11 +79,11 @@
     box-shadow:rgba(7, 15, 9, 0.13) 0px 7px 29px 0px;
     display: flex;
     font-size: 20px;
-    height: 150px;
+    height: 100px;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 50px;
     text-align: center;
-    width: 550px;
+    width: calc(70% + 30px);
 }
 
 .answers {
