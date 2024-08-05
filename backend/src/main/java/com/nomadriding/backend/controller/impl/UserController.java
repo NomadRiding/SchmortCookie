@@ -1,6 +1,7 @@
 package com.nomadriding.backend.controller.impl;
 
 import com.nomadriding.backend.model.User;
+import com.nomadriding.backend.model.UserDetails;
 import com.nomadriding.backend.service.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -70,6 +71,14 @@ public class UserController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateUser(@RequestBody @Valid User user, @PathVariable Integer id){
         userService.updateUser(user, id);
+    }
+
+    @PutMapping("/user/{id}/profile")
+    public ResponseEntity<Map<String, String>> updateUserProfile(@PathVariable Integer id, @RequestBody UserDetails userDetails) {
+        userService.updateUserProfile(id, userDetails);
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Profile updated successfully");
+        return ResponseEntity.ok(response);
     }
 
 

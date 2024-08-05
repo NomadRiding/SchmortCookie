@@ -1,6 +1,7 @@
 package com.nomadriding.backend.service.impl;
 
 import com.nomadriding.backend.model.User;
+import com.nomadriding.backend.model.UserDetails;
 import com.nomadriding.backend.repository.UserRepository;
 import com.nomadriding.backend.service.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,13 @@ public class UserService implements IUserService {
             throw new EntityNotFoundException("Invalid phone number or password");
         }
         return user;
+    }
+
+    public void updateUserProfile(Integer id, UserDetails userDetails) {
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+        existingUser.setUserDetails(userDetails);
+        userRepository.save(existingUser);
     }
 
     @Override

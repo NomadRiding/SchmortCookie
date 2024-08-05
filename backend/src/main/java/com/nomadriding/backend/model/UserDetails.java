@@ -20,4 +20,5 @@ public class UserDetails implements Serializable {
     private String venmoLink;
     private String cashApp;
     private String zelle;
+    private String profileImg;
 }
