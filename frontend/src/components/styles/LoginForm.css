@@ -36,21 +36,19 @@ form {
 }
 
 .form-input {
-    text-align: left;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    height: 25px;
-    margin: 10px;
-    /* margin: 0 35px 10px 35px; */
-    width: calc(100% - 20px);
     cursor: pointer;
-    /* border: 1px solid red; */
+    display: flex;
+    height: 25px;
+    justify-content: center;
+    margin: 10px;
+    text-align: left;
+    width: calc(100% - 20px);
+    
 }
 
 
 input {
-    /* border: 1px solid purple; */ 
     border-radius: 5px;
     box-shadow:rgba(7, 15, 9, 0.384) 0px 7px 29px 0px;
     cursor: pointer;
@@ -72,21 +70,6 @@ input {
     background-color: hsl(187, 65%, 26%);
     box-shadow:rgba(23, 100, 110, 0.384) 0px 7px 29px 0px;
     transition-delay: 0.08s;
-}
-
-.register-div {
-    /* display: flex; */
-}
-
-.register-switch {
-    /* margin-bottom: 15px; */
-}
-
-.register-toggle {
-    /* display: flex;
-    align-self: center;
-    font-weight: bold;
-    width: 60px; */
 }
 
 

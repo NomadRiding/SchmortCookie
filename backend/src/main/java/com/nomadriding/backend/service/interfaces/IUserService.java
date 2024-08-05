@@ -16,6 +16,6 @@ public interface IUserService {
     User findByPhoneNumberAndPassword(String phoneNumber, String password);
     boolean existsByPhoneNumber(String phoneNumber);
     void updateUserProfile(Integer id, UserDetails userDetails);
-    
+
 
 }

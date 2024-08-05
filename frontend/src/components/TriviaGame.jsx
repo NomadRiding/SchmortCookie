@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import TimerComponent from './CountDown';
+import green from '../assets/greenAbstract.mp4';
 
 const TriviaGame = ({ questions, currentQuestionIndex, score, onAnswer, onTimerEnd, selectedAnswer }) => {
     const [shuffledOptions, setShuffledOptions] = useState([]);
@@ -29,6 +30,7 @@ const TriviaGame = ({ questions, currentQuestionIndex, score, onAnswer, onTimerE
 
     return (
         <div className='trivia-game-boundaries'>
+            <video src={green} autoPlay loop muted className='background-video'/>
             <div className='trivia-app'>
                 <TimerComponent onTimerEnd={onTimerEnd} />
                 <div className="trivia-title">
