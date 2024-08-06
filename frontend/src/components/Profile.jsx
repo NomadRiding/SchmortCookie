@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import ProfileImg from './profileImg';
 
 const Profile = () => {
   const [email, setEmail] = useState('');
@@ -61,7 +62,8 @@ const Profile = () => {
   return (
     <div>
       <h1>Update Profile</h1>
-      {errorMessage && (
+      {/* <ProfileImg /> */}
+      {/* {errorMessage && (
         <div className='error-message'>
           <p>{errorMessage}</p>
         </div>
@@ -74,7 +76,7 @@ const Profile = () => {
       <div className='profile-section'>
         <input type="email" value={email} onChange={handleEmailChange(setEmail)} placeholder="Email" />
         
-      </div>
+      </div> */}
 
     </div>
   )

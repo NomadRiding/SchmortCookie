@@ -1,17 +1,23 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import '../components/styles/Homepage.css';
-import Trivia from '../components/Trivia';
+import trivia from '../components/Trivia';
+import StartGame from '../components/StartGame';
+import smartCookie from '../assets/smartcookiebooks.jpg';
+
 
 const HomePage = ({ user }) => {
   return (
-      // <div className='welcome-message'>
-      //     <h1>Welcome, GUEST!</h1>
-      //     <ul>
-      //       <li></li>
-      //     </ul>
-      // </div>
-      <Trivia />
+    <>
+      <div className="homePage-container">
+        <h1>Choose Your Game</h1>
+        <div className="trivia-play-qa">
+          <Link to="/trivia">
+          <img src={smartCookie} className='play-qa-img'/>
+          </Link>
+        </div>
+      </div>
+    </>
   )
 }
 

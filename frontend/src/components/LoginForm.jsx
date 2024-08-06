@@ -39,7 +39,7 @@ const LoginForm = ({ onLogin, onRegister }) => {
             if (!response.ok) {
                 const errorData = await response.json();
                 setErrorMessage(errorData.error || "An unexpected error occurred.");
-                return;  // Exit early if there's an error
+                return; 
             }
 
             const data = await response.json();
@@ -54,6 +54,7 @@ const LoginForm = ({ onLogin, onRegister }) => {
             } else {
                 if (typeof onLogin === 'function') {
                     onLogin(data);
+                    window.localStorage.setItem("isLoggedIn",true);
                 } else {
                     console.error('onLogin is not a function');
                 }
