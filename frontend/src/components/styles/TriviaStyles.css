@@ -95,6 +95,7 @@
     height: 100px;
     justify-content: center;
     margin-top: 50px;
+    padding: 20px;
     text-align: center;
     width: calc(70% + 30px);
 
@@ -105,6 +106,7 @@
     display: flex;
     justify-content: center;
     margin-top: 10px;
+    padding: 20px;
     width: 100%;
   
 }
@@ -257,4 +259,39 @@ li {
     background-color: hsl(187, 65%, 26%);
     box-shadow:rgba(23, 100, 110, 0.384) 0px 7px 29px 0px;
     transition-delay: 0.08s;
+}
+
+.c1 {
+    border: 1px solid red;
+    background-color: hsla(0, 0%, 0%, 0.26);
+    height: 80px;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+}
+
+.c2 {
+    border: 1px solid green;
+    height: 80px;
+    width: 80px;
+    margin: 70px;
+}
+
+.c3 {
+    border: 1px solid orange;
+    height: 80px;
+    width: 80px;
+    margin: 80px;
+}
+
+.c4 {
+    border: 1px solid purple;
+    height: 80px;
+    width: 80px;
+}
+
+.containing-examples {
+    display: flex;
+    justify-content: space-between;
 }

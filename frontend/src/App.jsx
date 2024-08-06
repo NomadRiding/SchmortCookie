@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-route
 import HomePage from "./pages/HomePage";
 import LoginForm from './components/LoginForm';
 import './App.css';
-import Trivia from './components/Trivia';
+import ProfilePage from './pages/ProfilePage';
+import TriviaPage from './pages/TriviaPage';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -13,10 +14,11 @@ function App() {
   const navigate = useNavigate();
 
   const handleLogin = (userData) => {
-    setUser(userData);
     setIsLoggedIn(true);
+    setUser(userData);
     console.log('User logged in:', userData);
     navigate('/')
+
   }
 
   const handleRegister = (userData) => {
@@ -38,6 +40,8 @@ function App() {
           {isLoggedIn ? (
             <>
             <Route path="/" element={<HomePage user={user} />} />
+            <Route path="/profile" element={<ProfilePage user={user} />} />
+            <Route path="/trivia" element={<TriviaPage user={user} />} />
             </>
           ) : (
             <Route path="/" element={<LoginForm onLogin={handleLogin} onRegister={handleRegister}/>} />
