@@ -66,7 +66,6 @@ function App() {
   }
 
 
-  console.log(isLoggedIn);
 
   return (
       <div>
