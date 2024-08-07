@@ -1,11 +1,14 @@
 import React from 'react';
 import Profile from '../components/Profile.jsx';
+import Navbar from '../components/Navbar.jsx';
 
 const ProfilePage = ({ user }) => {
   return (
-    <div>
+
+    <>
+        <Navbar />
         <Profile user={user} />  
-    </div>
+    </>
   )
 }
 

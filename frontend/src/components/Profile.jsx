@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import defaultProfileImageUrl from "../assets/blankprofilepic.jpg";
+import Navbar from "./Navbar";
+import "./styles/Profile.css";
 
 const Profile = ({ user }) => {
   const [email, setEmail] = useState("");
@@ -99,8 +101,7 @@ const Profile = ({ user }) => {
         }
 
         fetchProfile();
-      } catch (e) {
-      }
+      } catch (e) {}
     } catch (error) {
       console.error("Error:", error.message);
     }
@@ -108,57 +109,72 @@ const Profile = ({ user }) => {
 
   return (
     <div>
-      {profileImageUrl && (
-        <div>
-          <img
-            src={profileImageUrl}
-            alt="Profile"
-            style={{ width: 100, height: 100, objectFit: "cover" }}
-            onError={(e) => (e.target.src = defaultProfileImageUrl)}
-          />
-        </div>
-      )}
-      <form onSubmit={handleSubmit}>
-        <input type="file" name="file" onChange={handleImg} />
-        <input
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="First Name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Last Name"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Bio"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Zelle"
-          value={zelle}
-          onChange={(e) => setZelle(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="CashApp"
-          value={cashApp}
-          onChange={(e) => setCashApp(e.target.value)}
-        />
+      <div className="profile-container">
+        <div className="smaller-container">
 
-        <button type="submit">Submit</button>
-      </form>
+        {profileImageUrl && (
+          <div className="profile-img-icon">
+            <img
+              
+              src={profileImageUrl}
+              alt="Profile"
+              style={{ width: 100, height: 100, objectFit: "cover" }}
+              onError={(e) => (e.target.src = defaultProfileImageUrl)}
+              />
+          </div>
+        )}
+        <div>
+          <h1>
+            {firstName} {lastName}
+          </h1>
+        </div>
+        <div className="bio-section">🧑‍💻 {bio}</div>
+        </div>
+        <div className="form-section-container">
+
+        <form className="form-section" onSubmit={handleSubmit}>
+          <input type="file" name="file" onChange={handleImg} />
+          <input
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            />
+          <input
+            type="text"
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            />
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Bio"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            />
+          <input
+            type="text"
+            placeholder="Zelle"
+            value={zelle}
+            onChange={(e) => setZelle(e.target.value)}
+            />
+          <input
+            type="text"
+            placeholder="CashApp"
+            value={cashApp}
+            onChange={(e) => setCashApp(e.target.value)}
+            />
+
+          <button type="submit">Submit</button>
+        </form>
+        </div>
+      </div>
     </div>
   );
 };
