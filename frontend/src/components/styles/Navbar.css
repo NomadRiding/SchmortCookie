@@ -25,6 +25,19 @@
 
 }
 
+.nav-profile-img {
+    margin-right: 20px;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}
+
+.nav-profile-img:hover {
+    transform: scale(1.1);
+    transition: 0.4s;
+    z-index: 102;
+}
+
 .entry-video {
     height: 100%;
     width: 100%;
