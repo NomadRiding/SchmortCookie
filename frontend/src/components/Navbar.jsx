@@ -26,11 +26,11 @@ function Navbar() {
               className='logo-image'/>
               <h1 className='title-h1'>Schmort Cookie</h1>
           </Link>
+          <div className='profile-navbar-button'>
+            <Link to='/profile'>Go to Profile</Link>
+          </div>
         </div>
       </nav>
-      <div className='profile-navbar-button'>
-        <Link to={HomePage}>Go to Profile</Link>
-      </div>
     </div>
     </>
     

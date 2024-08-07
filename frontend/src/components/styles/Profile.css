@@ -1,0 +1,21 @@
+.the-profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid green;
+}
+
+.profile-name-greeting {
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.pic-change-button {
+    height: 30px;
+}
+
+.save-button {
+    height: 25px;
+    width: 60px;
+}
