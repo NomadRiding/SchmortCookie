@@ -134,6 +134,12 @@ const Profile = ({ user }) => {
         />
         <input
           type="text"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <input
+          type="text"
           placeholder="Bio"
           value={bio}
           onChange={(e) => setBio(e.target.value)}
