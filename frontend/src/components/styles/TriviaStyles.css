@@ -225,9 +225,12 @@ li {
 
 }
 
-.end-game-high-score {
-    font-size: 50px;
+.end-game-your-score {
+    font-size: 60px;
+    font-weight: bold;
     margin-top: 50px;
+    color: hsl(204, 63%, 59%);
+    -webkit-text-stroke: 3px rgb(33, 77, 197);
 }
 
 .High-score-number {

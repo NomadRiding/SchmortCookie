@@ -55,6 +55,7 @@ const LoginForm = ({ onLogin, onRegister }) => {
                 if (typeof onLogin === 'function') {
                     onLogin(data);
                     window.localStorage.setItem("isLoggedIn",true);
+                    window.localStorage.setItem("loggedIn", data.id)
                 } else {
                     console.error('onLogin is not a function');
                 }

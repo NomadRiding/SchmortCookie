@@ -5,6 +5,7 @@ import wholeCookie from '../assets/whole-cookie.png';
 import cookieBite from '../assets/cookie-bite.png';
 import cookie from '../assets/cookie.mp4';
 import HomePage from '../pages/HomePage';
+import blank from '../assets/blankprofilepic.jpg'
 
 function Navbar() {
     const [currentImage, setCurrentImage] = useState(wholeCookie);
@@ -27,7 +28,9 @@ function Navbar() {
               <h1 className='title-h1'>Schmort Cookie</h1>
           </Link>
           <div className='profile-navbar-button'>
-            <Link to='/profile'>Go to Profile</Link>
+            <Link to='/profile'>
+              <img className='nav-profile-img' src={blank} />
+            </Link>
           </div>
         </div>
       </nav>

@@ -16,7 +16,7 @@ const Trivia = () => {
     const [isAnswering, setIsAnswering] = useState(false);
     const [isGameRunning, setIsGameRunning] = useState(false);
     const [isGameEnded, setIsGameEnded] = useState(false);
-    const [highScore, setHighScore] = useState(0);
+    const [yourScore, setYourScore] = useState(0);
 
     useEffect(() => {
         fetch('http://localhost:8080/api/questions')
@@ -67,8 +67,8 @@ const Trivia = () => {
             } else {
                 setIsGameRunning(false);
                 setIsGameEnded(true);
-                if (score > highScore) {
-                    setHighScore(score);
+                if (score > yourScore) {
+                    setYourScore(score);
                 }
             }
             setSelectedAnswer(null);
@@ -79,8 +79,8 @@ const Trivia = () => {
     const handleTimerEnd = () => {
         setIsGameRunning(false);
         setIsGameEnded(true);
-        if (score > highScore) {
-            setHighScore(score);
+        if (score > yourScore) {
+            setYourScore(score);
         }
     };
 
@@ -114,7 +114,7 @@ const Trivia = () => {
             {isGameEnded && (
                 <GameEnded
                 score={score}
-                highScore={highScore}
+                highScore={yourScore}
                 onPlayAgain={handlePlayAgain}
                 />
             )}

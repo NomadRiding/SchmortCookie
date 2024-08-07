@@ -1,12 +1,9 @@
-import React, { useState } from "react";
-import { Dialog } from 'primereact/dialog';
-import { InputText } from 'primereact/inputtext';
-import blank from '../assets/blankprofilepic.jpg';
-import './styles/Profile.css';
-import Avatar from "react-avatar-edit";
+import React, { useState, useEffect } from "react";
+import defaultProfileImageUrl from "../assets/blankprofilepic.jpg";
+import Navbar from "./Navbar";
+import "./styles/Profile.css";
 
-
-const Profile = ( {user} ) => {
+const Profile = ({ user }) => {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -14,38 +11,57 @@ const Profile = ( {user} ) => {
   const [venmoLink, setVenmoLink] = useState("");
   const [zelle, setZelle] = useState("");
   const [cashApp, setCashApp] = useState("");
-  const [profileImg, setProfileImg] = useState("");
-  const [imageCrop, setImageCrop] = useState('');
-  const [src, setSrc] = useState(false);
-  const [profile, setProfile] = useState([]);
-  const [pview, setPview] = useState(false);
+  const [profileImg, setProfileImg] = useState(null);
+  const [profileImageUrl, setProfileImageUrl] = useState(
+    defaultProfileImageUrl
+  );
 
-  const profileFinal = profile.map((item) => item.pview);
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8080/api/user/${user.id}/profile`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
 
-  const onClose = () => {
-    setPview(null);
-  }
+        if (!response.ok) {
+          throw new Error("Failed to fetch profile");
+        }
 
-  const onCrop = (view) => {
-    setPview(view);
-  }
+        const profileData = await response.json();
+        setEmail(profileData.email);
+        setFirstName(profileData.firstName);
+        setLastName(profileData.lastName);
+        setBio(profileData.bio);
+        setVenmoLink(profileData.venmoLink);
+        setZelle(profileData.zelle);
+        setCashApp(profileData.cashApp);
 
-  const saveCropImage = () => {
-    setProfile([...profile, {pview}]);
-    setImageCrop(false);
-  }
+        const imageUrl = profileData.profileImg || defaultProfileImageUrl;
+        setProfileImageUrl(imageUrl);
+      } catch (error) {
+        console.error("Error fetching profile:", error.message);
+      }
+    };
 
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const handleFirstNameChange = (e) => setFirstName(e.target.value);
-  const handleLastNameChange = (e) => setLastName(e.target.value);
-  const handleBioChange = (e) => setBio(e.target.value);
-  const handleVenmoLinkChange = (e) => setVenmoLink(e.target.value);
-  const handleZelleChange = (e) => setZelle(e.target.value);
-  const handleCashApp = (e) => setCashApp(e.target.value);
-  const handleProfileImg = (e) => setProfileImg(e.target.value);
+    fetchProfile();
+  }, [user.id]);
+
+  const handleImg = (e) => {
+    setProfileImg(e.target.files[0]);
+    console.log("Selected file:", e.target.files[0]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData();
+    if (profileImg) {
+      formData.append("profileImg", profileImg);
+    }
 
     const userDetails = {
       email,
@@ -55,108 +71,110 @@ const Profile = ( {user} ) => {
       venmoLink,
       zelle,
       cashApp,
-      profileImg,
     };
+    formData.append("userDetails", JSON.stringify(userDetails));
+
+    console.log("FormData being sent:");
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}:`, value);
+    }
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/user/${userId}/profile`,
+        `http://localhost:8080/api/user/${user.id}/profile`,
         {
-          method: `PUT`,
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userDetails),
+          method: "PUT",
+          body: formData,
+          credentials: "include",
         }
       );
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        setErrorMessage(errorData.error);
-        return;
-      }
+      const textResponse = await response.text();
+      try {
+        const jsonResponse = JSON.parse(textResponse);
+        if (!response.ok) {
+          throw new Error(jsonResponse.error);
+        }
+        console.log("Profile Updated Successfully:", jsonResponse);
+        if (jsonResponse.profileImageUrl) {
+          setProfileImageUrl(jsonResponse.profileImageUrl);
+        }
 
-      const data = await response.json();
-      setSuccessMessage("Profile Updated Successfully");
+        fetchProfile();
+      } catch (e) {}
     } catch (error) {
       console.error("Error:", error.message);
-      setErrorMessage("An unexpected error occurred.");
     }
   };
 
   return (
     <div>
-      <h1>Update Profile</h1>
-      <div className="profile_img text-center p-4">
-        <div className="flex flex-column justify-content-center align-items-center">
-          <img 
-          onClick={() => setImageCrop(true)}
-          src={profile.length ? profileFinal : blank} 
-          alt="profile image" 
-          className="the-profile-img" />
-          <label htmlFor="" className="profile-name-greeting">Guest</label>
-          <Dialog 
-            visible={imageCrop}
-              header={() => (
-                <p htmlFor="" className="text-2xl font-semibold textColor">
-                  UpdateProfile
-                </p>
-              )}
-              onHide={() => setImageCrop(false)}
-          >
-            <div className="profile-image-setting">
-              <Avatar 
-                width={500}
-                height={400}
-                onCrop={onCrop}
-                onClose={onClose}
-                src={src}
-                shadingColor={"#474649"}
-                backgroundColor={"#474649"}
+      <div className="profile-container">
+        <div className="smaller-container">
+
+        {profileImageUrl && (
+          <div className="profile-img-icon">
+            <img
+              
+              src={profileImageUrl}
+              alt="Profile"
+              style={{ width: 100, height: 100, objectFit: "cover" }}
+              onError={(e) => (e.target.src = defaultProfileImageUrl)}
               />
-              <div className="pic-change-button">
-                <div>
-                  <button 
-                    className="save-button"
-                    onClick={saveCropImage}
-                    label="save"
-                    icon="pi pi-check"
-                  >Save </button>
-                </div>
-              </div>
-            </div>
+          </div>
+        )}
+        <div>
+          <h1>
+            {firstName} {lastName}
+          </h1>
+        </div>
+        <div className="bio-section">🧑‍💻 {bio}</div>
+        </div>
+        <div className="form-section-container">
 
-          </Dialog>
-          <InputText type="file" 
-            accept="/image/*"
-            style={{display: "none"}}
-
-            onChange={(e) => {
-              const file = e.target.files[0];
-              if(file && file.type.substring(0,5) === "image") {
-                setProfileImg(file);
-              } else {
-                setProfileImg(null)
-              }
-            }}
+        <form className="form-section" onSubmit={handleSubmit}>
+          <input type="file" name="file" onChange={handleImg} />
+          <input
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            />
+          <input
+            type="text"
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            />
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
           />
+          <input
+            type="text"
+            placeholder="Bio"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            />
+          <input
+            type="text"
+            placeholder="Zelle"
+            value={zelle}
+            onChange={(e) => setZelle(e.target.value)}
+            />
+          <input
+            type="text"
+            placeholder="CashApp"
+            value={cashApp}
+            onChange={(e) => setCashApp(e.target.value)}
+            />
+
+          <button type="submit">Submit</button>
+        </form>
         </div>
       </div>
-      {/* <ProfileImg /> */}
-      {/* {errorMessage && (
-        <div className='error-message'>
-          <p>{errorMessage}</p>
-        </div>
-      )}
-      {successMessage && (
-        <div className="success-message">
-          <p>{successMessage}</p>
-        </div>
-      )}
-      <div className='profile-section'>
-        <input type="email" value={email} onChange={handleEmailChange(setEmail)} placeholder="Email" />
-        
-      </div> */}
     </div>
   );
 };

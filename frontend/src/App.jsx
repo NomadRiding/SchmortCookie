@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 
 import HomePage from "./pages/HomePage";
@@ -12,6 +12,43 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const navigate = useNavigate();
+
+  const url = `http://localhost:8080/api/user/${localStorage.getItem("loggedIn")}`;
+  console.log('Fetching URL:', url);
+
+  const checkedLoggedIn = async (e) => {      
+    try {
+        const userId = localStorage.getItem("loggedIn");
+        if (!userId) {
+            throw new Error('No user ID found in local storage');
+        }
+
+        const url = `http://localhost:8080/api/user/${userId}`;
+        const response = await fetch(url, {
+            method: 'GET'
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(`${errorData.status} ${errorData.error}: ${errorData.message}`);
+        }
+
+        const data = await response.json();
+        setIsLoggedIn(true);
+        setUser(data);
+      
+
+    } catch (error) {
+        console.error('Error:', error.message); // Debugging: Handle and display errors
+    }
+};
+
+
+  useEffect(() => {
+    if(localStorage.getItem("loggedIn") && !isLoggedIn){
+      checkedLoggedIn()
+    }
+  },[])
 
   const handleLogin = (userData) => {
     setIsLoggedIn(true);
@@ -38,6 +75,7 @@ function App() {
 
         <Routes>
           {isLoggedIn ? (
+            
             <>
             <Route path="/" element={<HomePage user={user} />} />
             <Route path="/profile" element={<ProfilePage user={user} />} />
