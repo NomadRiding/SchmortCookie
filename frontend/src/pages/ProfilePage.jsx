@@ -4,7 +4,7 @@ import Profile from '../components/Profile.jsx';
 const ProfilePage = ({ user }) => {
   return (
     <div>
-        <Profile />  
+        <Profile user={user} />  
     </div>
   )
 }
