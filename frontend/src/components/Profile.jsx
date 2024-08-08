@@ -118,7 +118,7 @@ const Profile = ({ user }) => {
               
               src={profileImageUrl}
               alt="Profile"
-              style={{ width: 100, height: 100, objectFit: "cover" }}
+              style={{ width: 100, height: 100, objectFit: "cover", borderRadius: "50%" }}
               onError={(e) => (e.target.src = defaultProfileImageUrl)}
               />
           </div>
