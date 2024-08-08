@@ -28,8 +28,10 @@ public class User implements Serializable {
     @Embedded
     private UserDetails userDetails;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<GamePlay> gamePlays = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<GamePlay> gamePlays;
+
+    private boolean loggedOn;
 
 //    public User(String phoneNumber, String password) {
 //        this.phoneNumber = phoneNumber;

@@ -55,6 +55,7 @@
 .profile-img-icon {
   height: 100px;
   width: 100px;
+  border-radius: 50%;
   position: relative;
   transition: transform 0.3s ease;
   transform: translateX(0px) rotate(0deg);
