@@ -196,5 +196,125 @@
     "question": "What color is a giraffe's tongue?",
     "correctAnswer": "Black",
     "options": ["blue", "purple", "red"]
+  },
+  {
+    "id": 34,
+    "question": "What metal does a blacksmith primarily work with?",
+    "correctAnswer": "Iron",
+    "options": ["Gold", "Vibranium", "Copper"]
+  },
+  {
+    "id": 35,
+    "question": "A bushel is a standard unit originally used to measure the weight of what?",
+    "correctAnswer": "Grain",
+    "options": ["Potatoes", "Wood", "Berries"]
+  },
+  {
+    "id": 36,
+    "question": "Carrageenan, a product commonly found in Ice Cream and Toothpaste; is an extract of what? ",
+    "correctAnswer": "Seaweed",
+    "options": ["Carrots", "Camomile", "Garlic"]
+  },
+  {
+    "id": 37,
+    "question": "A duvet cover is usually used to cover what?",
+    "correctAnswer": "Comforter",
+    "options": ["Bidet", "Car", "Couch"]
+  },
+  {
+    "id": 38,
+    "question": "A group of crows is called a what?",
+    "correctAnswer": "Murder",
+    "options": ["Crowettes", "Black Omen", "Cluster"]
+  },
+  {
+    "id": 39,
+    "question": "A leghorn is what type of animal?",
+    "correctAnswer": "Chicken",
+    "options": ["Cow", "Dog", "Goat"]
+  },
+  {
+    "id": 40,
+    "question": "A Mochaccino is made by adding which ingredient to a cappuccino?",
+    "correctAnswer": "Chocolate",
+    "options": ["Rum", "Matcha", "Cinnamon"]
+  },
+  {
+    "id": 41,
+    "question": "A radial pulse is taken by feeling what part of the body?",
+    "correctAnswer": "Wrist",
+    "options": ["Neck", "Groin", "Foot"]
+  },
+  {
+    "id": 42,
+    "question": "A 'universal donor' has which blood type?",
+    "correctAnswer": "O",
+    "options": ["AB", "Red", "A"]
+  },
+  {
+    "id": 43,
+    "question": "The term 'Avast, ye mateys' is commanding someone to do what?",
+    "correctAnswer": "Stop",
+    "options": ["Look out", "Speed up", "Look There"]
+  },
+  {
+    "id": 44,
+    "question": "A rival to the Kindle, what is the name of the e-book reader sold at Barnes and Noble?",
+    "correctAnswer": "Nook",
+    "options": ["Boox", "Kobo", "Kindle"]
+  },
+  {
+    "id": 45,
+    "question": "The Spanish word 'Salida', means?",
+    "correctAnswer": "Exit",
+    "options": ["Salty", "Small island", "Saliva"]
+  },
+  {
+    "id": 46,
+    "question": "Kara Zor El, is a cousin to which superhero?",
+    "correctAnswer": "Superman",
+    "options": ["Green Lantern", "Ironman", "Magneto"]
+  },
+  {
+    "id": 47,
+    "question": "A torch, Oak branch, and Olive branch is featured on the back of what U.S. coin?",
+    "correctAnswer": "Dime",
+    "options": ["Penny", "Half-dollar", "Nickle"]
+  },
+  {
+    "id": 48,
+    "question": "Having a song or tune stuck in one's head is slangily known as what?",
+    "correctAnswer": "Earworm",
+    "options": ["Bookworm", "Song dance", "autotune"]
+  },
+  {
+    "id": 49,
+    "question": "Able to swim for miles on end, what animal has the scientific name 'Ursus maratimus'?",
+    "correctAnswer": "Polar Bear",
+    "options": ["Moose", "Caribou", "Cougar"]
+  },
+  {
+    "id": 50,
+    "question": "Fill in the blank: A famous Yves Saint Laurent quote, `Fashion fades, ___ is eternal'",
+    "correctAnswer": "Style",
+    "options": ["Gold", "Love", "Brand"]
+  },
+  {
+    "id": 51,
+    "question": "According to a popular expression, what is 'always 20/20'?",
+    "correctAnswer": "Hindsight",
+    "options": ["Vision", "Odds", "Hine site"]
+  },
+  {
+    "id": 52,
+    "question": "Since 1916, Nathan's hot dog eating contest is held where in NY?",
+    "correctAnswer": "Coney Island",
+    "options": ["Brooklyn", "Las Vegas", "Queens"]
+  },
+  {
+    "id": 53,
+    "question": "Shredded cabbage is the main ingredient in which of these dishes?",
+    "correctAnswer": "Coleslaw",
+    "options": ["Cabbage soup", "stuffed Cabbage", "Reuben sandwich"]
   }
 ]
